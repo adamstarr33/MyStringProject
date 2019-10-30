@@ -19,16 +19,52 @@ public class MyString
 	}
 	public char charAt(int index) // IF INDEX OUT OF BOUNDS. EXIT PROGRAM! (dont return anything)
 	{
-//		if ( REQUESTED INDEX OUT OF BOUNDS PHYSICALLY || LOGICALLY )
-//		{
-//			System.out.println("\nFATAL ERROR: charAt() given invalid index\n");
-//			System.exit(0);
-//		}
-		return '?'; // JUST TO MAKE IT COMPILE. REPLACE WITH YOUR CODE AND RETURN VALUE
+
+		if(index>letters.length-1)
+		{
+			System.out.println("\nFATAL ERROR: charAt() given invalid index\n");
+			System.exit(0);
+		}
+		return letters[index]; // JUST TO MAKE IT COMPILE. REPLACE WITH YOUR CODE AND RETURN VALUE
 	}
 	public int compareTo(MyString other)
 	{
-		return -999; // JUST TO MAKE IT COMPILE. REPLACE WITH YOUR CODE AND RETURN VALUE
+		if(letters.length > other.letters.length)
+		{
+			for(int i=0; i<other.letters.length; i++)
+		{
+			if(letters[i]>other.letters[i])
+			{
+				return 1;
+			}
+			if(letters[i]<other.letters[i])
+			{
+				return -1;
+			}
+		}
+			return 1;
+		}
+		else
+		{
+			for(int i=0; i<letters.length; i++)
+			{
+				if(letters[i]>other.letters[i])
+			{
+				return 1;
+			}
+			if(letters[i]<other.letters[i])
+			{
+				return -1;
+			}
+			}
+
+			if(letters.length == other.letters.length)
+			{
+				return 0;
+			}
+			return -1;
+		}
+		 // JUST TO MAKE IT COMPILE. REPLACE WITH YOUR CODE AND RETURN VALUE
 	}	
 	public boolean equals(MyString other)
 	{
@@ -53,6 +89,11 @@ public class MyString
 	}
 	public String toString()
 	{
-		return "ToString() method needs to be written"; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH YOUR CODE AND RETURN VALUE
+		String a = new String();
+		for(int i=0; i<letters.length; i++)
+		{
+			a+=letters[i];
+		}
+		return a; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH YOUR CODE AND RETURN VALUE
 	}
 } // END MYSTRING CLASS
