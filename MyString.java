@@ -78,6 +78,21 @@ public class MyString
 	// You should use this in your other Indexof Method
 	public int indexOf(int startIndex, char ch)	
 	{
+		if(startIndex>letters.length-1)
+		{
+			System.out.println("\nFATAL ERROR: indexOf() given invalid startIndex\n");
+			System.exit(0);
+		}
+
+		int indOf1stKeyLetter;
+		for(int i=startIndex; i<letters.length; i++)
+		{
+			if(letters[i] == ch)
+			{
+				indOf1stKeyLetter = i;
+				return indOf1stKeyLetter;
+			}
+		}
 //		if ( REQUESTED INDEX OUT OF BOUNDS PHYSICALLY || LOGICALLY )
 //		{
 //			System.out.println("\nFATAL ERROR: indexOf() given invalid startIndex\n");
@@ -89,11 +104,41 @@ public class MyString
 	// IN THIS METHOD BELOW YOU MUST RE-USE indexOf( int startIndex, char ch) METHOD ABOVE
 	public int indexOf(MyString key)
 	{	
-		return -999; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH YOUR CODE AND RETURN VALUE
+		if(key.letters.length > letters.length)
+		{
+			return NOT_FOUND;
+		}
+
+		int indOf1stKeyLetter = indexOf(0, key.letters[0]);
+
+		while(indOf1stKeyLetter != NOT_FOUND)
+		{
+			if(keyFound(indOf1stKeyLetter, key) == true)
+			{
+				return indOf1stKeyLetter;
+			}
+			else
+			{
+				indOf1stKeyLetter = indexOf(indOf1stKeyLetter+key.letters.length, key.letters[0]);
+			}
+		}
+		return NOT_FOUND; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH YOUR CODE AND RETURN VALUE
 	}
 	public String toString()
 	{
 		String a = new String(letters);
 		return a; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH YOUR CODE AND RETURN VALUE
+	}
+
+	public boolean keyFound(int ind, MyString key)
+	{
+		for(int i=0; i<key.letters.length; i++)
+		{
+			if(letters[ind+i] != key.letters[i])
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 } // END MYSTRING CLASS
