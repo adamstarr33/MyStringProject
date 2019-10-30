@@ -68,6 +68,10 @@ public class MyString
 	}	
 	public boolean equals(MyString other)
 	{
+		if(compareTo(other)==0)
+		{
+			return true;
+		}
 		return false; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH YOUR CODE AND RETURN VALUE
 	}
 	// LOOKING for c but starting at [startIndex],  not at [0]
@@ -89,11 +93,7 @@ public class MyString
 	}
 	public String toString()
 	{
-		String a = new String();
-		for(int i=0; i<letters.length; i++)
-		{
-			a+=letters[i];
-		}
+		String a = new String(letters);
 		return a; // JUST TO MAKE IT COMPILE. YOU REPLACE WITH YOUR CODE AND RETURN VALUE
 	}
 } // END MYSTRING CLASS
